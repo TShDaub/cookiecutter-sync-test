@@ -29,7 +29,8 @@ jobs:
           git config --global user.name "YourOrg Bot"
           
           # Example: Clone downstream repo
-          git clone https://x-access-token:${GH_TOKEN}@github.com:TShDaub/Python-support-testbed.git
+          git clone https://${GH_TOKEN}@github.com/TShDaub/Python-support-testbed.git
+
           cd target-repo
 
           # Apply template update using cruft

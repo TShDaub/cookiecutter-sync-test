@@ -37,11 +37,10 @@ jobs:
           cruft update -y
 
           # Commit and push changes
-          git checkout -b update-from-template
-          git pull --rebase
+          git checkout -b update-from-template-1
           git add .
           git commit -m "Update project from cookiecutter template"
-          git push origin update-from-template
+          git push origin update-from-template-1
 
           # Create PR
-          gh pr create --fill --base main --head update-from-template
+          gh pr create --fill --base main --head update-from-template-1

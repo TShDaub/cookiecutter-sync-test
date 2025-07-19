@@ -1,3 +1,3 @@
 # {{ cookiecutter.project_name }}
 
-Author: {{ cookiecutter.author }} <{{ cookiecutter.email }}>
+Testing take 1 

@@ -25,7 +25,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}  # Set in repo secrets
         run: |
-          git config --global user.email "bot@yourorg.com"
+          git config --global user.email "bot@github.com"
           git config --global user.name "YourOrg Bot"
           
           # Example: Clone downstream repo

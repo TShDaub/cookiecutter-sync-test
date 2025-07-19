@@ -1,0 +1,45 @@
+# .github/workflows/propagate-template.yml
+name: Propagate template updates
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]  # Or your default branch
+jobs:
+  propagate:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout template repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install cruft
+
+      - name: Apply template update to downstream repo
+        env:
+          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}  # Set in repo secrets
+        run: |
+          git config --global user.email "bot@yourorg.com"
+          git config --global user.name "YourOrg Bot"
+          
+          # Example: Clone downstream repo
+          git clone https://x-access-token:${GH_TOKEN}@github.com/your-org/target-repo.git
+          cd target-repo
+
+          # Apply template update using cruft
+          cruft update --yes
+
+          # Commit and push changes
+          git checkout -b update-from-template
+          git add .
+          git commit -m "Update project from cookiecutter template"
+          git push origin update-from-template
+
+          # Create PR
+          gh pr create --fill --base main --head update-from-template

@@ -1,2 +1,2 @@
 # cookiecutter-sync-test
-An experiment in cookiecutter synchronisation
+An experiment in cookiecutter synchronisation adkak

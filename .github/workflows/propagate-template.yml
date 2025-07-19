@@ -38,6 +38,7 @@ jobs:
 
           # Commit and push changes
           git checkout -b update-from-template
+          git pull --rebase
           git add .
           git commit -m "Update project from cookiecutter template"
           git push origin update-from-template
